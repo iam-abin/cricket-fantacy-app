@@ -76,7 +76,7 @@ const createATeam = async (req, res) => {
 	console.log("Added!");
 	console.log(inserted.insertedId);
 
-	res.send({ data: playersDetails });
+	res.status(201).send({ data: playersDetails });
 };
 
 
@@ -99,7 +99,7 @@ const processData = async (req, res) => {
 
 	const response = await Promise.all(processingPromises);
 
-	res.send({ data: "processing done" });
+	res.status(200).send({ data: "processing done" });
 };
 
 // This function process data for team
@@ -165,7 +165,7 @@ const teamResult = async (req, res) => {
 		])
 		.toArray();
 
-	res.send({ data: alTeamsResult });
+	res.status(200).send({ data: alTeamsResult });
 };
 
 module.exports = {
