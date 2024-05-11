@@ -1,0 +1,4 @@
+DB_USER = your mongo username
+DB_PWD = your mongo password
+DB_URL = your mongo url eg:- "secproject.av8pd1j.mongodb.net"
+DB_COLLECTION_NAME = db collection name    eg:- "players"
