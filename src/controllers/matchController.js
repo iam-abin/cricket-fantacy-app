@@ -1,6 +1,6 @@
 const { db } = require("../config/db");
 
-const minMaxPlayers = require("../constants/minMaxPlayers");
+const minMaxPlayers = require("../config/constants/minMaxPlayers");
 
 const {
 	getMatchDataFromFile,

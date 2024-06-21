@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 require('dotenv').config()
 
 const matchRouter = require('./src/routes/matchRouter');
@@ -16,4 +15,5 @@ connectDb()
 // Endpoints
 app.use('/', matchRouter);
 
-app.listen(port, () => console.log(`App listening on port ${port}`));
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`App listening on port ${PORT}...`));

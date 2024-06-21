@@ -1,30 +1,14 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
-
-// Database Details
-const DB_USER = process.env["DB_USER"];
-const DB_PWD = process.env["DB_PWD"];
-const DB_URL = process.env["DB_URL"];
-const DB_NAME = "task-jeff";
-
-const uri = "mongodb+srv://"+DB_USER+":"+DB_PWD+"@"+DB_URL+"/?retryWrites=true&w=majority";
-
-const client = new MongoClient(uri, {
-	serverApi: {
-		version: ServerApiVersion.v1,
-		strict: true,
-		deprecationErrors: true,
-	},
-});
+const mongoose = require("mongoose");
 
 const connectDb = async () => {
-	await client.connect();
-	await client.db("admin").command({ ping: 1 });
-	console.log("connected to db.......");
+	try {
+		await mongoose.connect("mongodb://localhost:27017/cricket11");
+		console.log("connected to db.......");
+	} catch (error) {
+		console.log(error);
+	}
 };
-
-const db = client.db(DB_NAME);
 
 module.exports = {
 	connectDb,
-	db,
 };

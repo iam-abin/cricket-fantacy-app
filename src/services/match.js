@@ -1,10 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
-const battingPoints = require("../constants/battingPoints");
-const bowlingPoints = require("../constants/bowlingPoints");
-const fieldingPoints = require("../constants/fieldingPoints");
-const roles = require("../constants/roles");
+const battingPoints = require("../config/constants/battingPoints");
+const bowlingPoints = require("../config/constants/bowlingPoints");
+const fieldingPoints = require("../config/constants/fieldingPoints");
+const roles = require("../config/constants/roles");
 const { captainsPoint, viceCaptainsPoint } = require("../services/points");
 
 const getMatchDataFromFile = async () => {
@@ -44,7 +44,12 @@ const processFieldingPoints = (currentBowlData, teamData, playersMap) => {
 	}
 };
 
-const processBowlingPoints = (currentBowlData, playersMap, teamData, currentOverRun) => {
+const processBowlingPoints = (
+	currentBowlData,
+	playersMap,
+	teamData,
+	currentOverRun
+) => {
 	// To get the currently throwing bowler and take him form our team list
 	let bowlerData = playersMap.get(currentBowlData.bowler);
 
@@ -78,7 +83,10 @@ const processBowlingPoints = (currentBowlData, playersMap, teamData, currentOver
 				teamData.totalPoint += bowlingPoints.WICKET_EXCLUDING_RUN_OUT;
 			}
 
-			if (currentBowlData.kind === "lbw" || currentBowlData.kind === "bowled") {
+			if (
+				currentBowlData.kind === "lbw" ||
+				currentBowlData.kind === "bowled"
+			) {
 				teamData.totalPoint += bowlingPoints.BONUS_LBW_OR_BOWLED;
 			}
 		}
@@ -164,11 +172,11 @@ const processBattingPoints = (currentBowlData, teamData, playersMap) => {
 
 // Utility function to chunk array into smaller batches
 const chunkArray = (array, chunkSize) => {
-    const chunkedArray = [];
-    for (let i = 0; i < array.length; i += chunkSize) {
-        chunkedArray.push(array.slice(i, i + chunkSize));
-    }
-    return chunkedArray;
+	const chunkedArray = [];
+	for (let i = 0; i < array.length; i += chunkSize) {
+		chunkedArray.push(array.slice(i, i + chunkSize));
+	}
+	return chunkedArray;
 };
 
 module.exports = {
