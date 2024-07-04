@@ -1,4 +1,4 @@
-# cricket-fantacy-app - 
+# cricket-fantacy-app
 
 A backend application that accept a 11 member team entry from user (similar to Dream11).
 The team earn points based on the performance of the selected playars in actual cricket matches(here RR vs CSK).
@@ -12,14 +12,14 @@ Process the results based on match results.
 
 ## Data
 
-Players: 
---
+### Players: 
+
 - There are CSV and JSON files(use any one of them) under 'data' folder for players list.
 - This contains list of all players in two teams (RR and CSK 2022).
 - This is the list from which players can be chosen for team entry.
 
-Match: 
---
+### Match: 
+
 - There are CSV and JSON files under 'data' folder for match result.
 - This contains ball by ball results of the match (RR and CSK 2022).
 - This should be used for result generation and points calculation for team entries.
@@ -31,8 +31,8 @@ Match:
 Every cricket team entry must have 11 players.
 A maximum of 10 players can be selected from any one of the teams.
 
-Min & Max Players in a team
---
+### Min & Max Players in a team:
+
 | Player          | Type | Min | Max |
 |-----------------|------|-----|-----|
 | Wicket Keeper   | WK   | 1   | 8   |
@@ -44,7 +44,7 @@ Once you have selected your 11 players, you will have to assign a captain and vi
 The captain will give you 2x points scored by them in the actual match.
 The vice-captain will give you 1.5x points scored by them in the actual match.
 
-## Batting Points
+### Batting Points:
 
 - Run: +1
 - Boundary Bonus: +1
@@ -56,8 +56,8 @@ The vice-captain will give you 1.5x points scored by them in the actual match.
 
 
 
-## Bowling Points
---
+### Bowling Points:
+
 - Wicket (Excluding Run Out)	+25
 - Bonus (LBW / Bowled)		    +8
 - 3 Wicket Bonus				      +4
@@ -66,8 +66,8 @@ The vice-captain will give you 1.5x points scored by them in the actual match.
 - Maiden Over					        +12
 
 
-## Fielding Points
---
+### Fielding Points:
+
 - Catch						    +8
 - 3 Catch Bonus				+4
 - Stumping					  +12
@@ -78,7 +78,7 @@ The vice-captain will give you 1.5x points scored by them in the actual match.
 
 ## Endpoints
 
-### Add Team Entry "/add-team"
+#### Add Team Entry "/add-team"
 - App users can use this endpoint to submit new team entries
 - Validate for player selection rules as above
 - Input Parameters:
@@ -88,14 +88,14 @@ The vice-captain will give you 1.5x points scored by them in the actual match.
   - vice-captain (required, player name)
 
 
-### Process Match Result "/process-result"
+#### Process Match Result "/process-result"
   - Run this endpoint to process match result
   - This should calculate points for the players and assign it to the team entries with those players
   - Input Parameters:
     - None, the resuls will be processed using data/match.json for CSKvRR 2022
 
 
-### View Teams Results "/team-result"
+#### View Teams Results "/team-result"
   - To view the list of team entries with thier scored points and the team's total points
   - The top team with maximum points should be shown as winner
   - If multiple teams have the top score, show all the winning teams
