@@ -1,75 +1,77 @@
-# TASK
+# cricket-fantacy-app - 
 
-Write a simple backend to accept team entries for a fantasy cricket app (similar to Dream11) and process the results based on match results. Use Node.js backend with express for API and MongoDB for database. Core packages are pre-installed with a dev database connection to MongoDB Atlas. You are free to add additional libraries for validation, etc.
+A backend application that accept a 11 member team entry from user (similar to Dream11).
+The team earn points based on the performance of the selected playars in actual cricket matches(here RR vs CSK).
+Process the results based on match results. 
 
 
 ## Tech Stack 
 - Node.js with Express
-- Database 
-  - MongoDB 
-  - DB Name: "task-"
+- MongoDB Database 
 
 
 ## Data
 
 Players: 
 --
-- There are CSV and JSON files under data folder for players list
-- This contains list of all players in two teams (RR and CSK 2022)
-- This is the list from which players can be chosen for team entry 
+- There are CSV and JSON files(use any one of them) under 'data' folder for players list.
+- This contains list of all players in two teams (RR and CSK 2022).
+- This is the list from which players can be chosen for team entry.
 
 Match: 
 --
-- There are CSV and JSON files under data folder for match result
-- This contains ball by ball results of the match (RR and CSK 2022)
-- This should be used for result generation and points calculation for team entries 
+- There are CSV and JSON files under 'data' folder for match result.
+- This contains ball by ball results of the match (RR and CSK 2022).
+- This should be used for result generation and points calculation for team entries.
 
 
 
 ## Rules
 
-Every cricket team entry must have 11 players
-A maximum of 10 players can be selected from any one of the teams
+Every cricket team entry must have 11 players.
+A maximum of 10 players can be selected from any one of the teams.
 
 Min & Max Players in a team
 --
-Player 				    Type	Min	Max
-Wicket Keeper 	 	WK		1	  8
-Batter	 			    BAT		1	  8
-All Rounder			  AR		1	  8
-Bowler				    BWL		1	  8
+| Player          | Type | Min | Max |
+|-----------------|------|-----|-----|
+| Wicket Keeper   | WK   | 1   | 8   |
+| Batter          | BAT  | 1   | 8   |
+| All Rounder     | AR   | 1   | 8   |
+| Bowler          | BWL  | 1   | 8   |
 
 Once you have selected your 11 players, you will have to assign a captain and vice-captain for your team
 The captain will give you 2x points scored by them in the actual match.
 The vice-captain will give you 1.5x points scored by them in the actual match.
 
-Batting Points
+## Batting Points
+
+- Run: +1
+- Boundary Bonus: +1
+- Six Bonus: +2
+- 30 Run Bonus: +4
+- Half-century Bonus: +8
+- Century Bonus: +16
+- Dismissal for a duck: -2 (Batter, Wicket-Keeper & All-Rounder only)
+
+
+
+## Bowling Points
 --
-Run						        +1
-Boundary Bonus			  +1
-Six Bonus				      +2
-30 Run Bonus			    +4
-Half-century Bonus	  +8
-Century Bonus			    +16
-Dismissal for a duck 	-2 (Batter, Wicket-Keeper & All-Rounder only)
+- Wicket (Excluding Run Out)	+25
+- Bonus (LBW / Bowled)		    +8
+- 3 Wicket Bonus				      +4
+- 4 Wicket Bonus				      +8
+- 5 Wicket Bonus				      +16
+- Maiden Over					        +12
 
 
-Bowling Points
+## Fielding Points
 --
-Wicket (Excluding Run Out)	+25
-Bonus (LBW / Bowled)		    +8
-3 Wicket Bonus				      +4
-4 Wicket Bonus				      +8
-5 Wicket Bonus				      +16
-Maiden Over					        +12
-
-
-Fielding Points
---
-Catch						    +8
-3 Catch Bonus				+4
-Stumping					  +12
-Run out 	          +6
+- Catch						    +8
+- 3 Catch Bonus				+4
+- Stumping					  +12
+- Run out 	          +6
 
 
 

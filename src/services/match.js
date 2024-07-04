@@ -28,18 +28,18 @@ const processFieldingPoints = (currentBowlData, teamData, playersMap) => {
 		// Checking for wicket types by fielders
 		if (fielderData) {
 			if (currentBowlData.kind === "caught") {
-				teamData.totalPoint += fieldingPoints.CATCH;
+				teamData.totalPoints += fieldingPoints.CATCH;
 
 				fielderData.totalCaughts = (fielderData.totalCaughts || 0) + 1;
 
 				if (fielderData.totalCaughts === 3)
-					teamData.totalPoint += fieldingPoints.THREE_CATCH_BONUS;
+					teamData.totalPoints += fieldingPoints.THREE_CATCH_BONUS;
 			}
 			if (currentBowlData.kind === "stumping")
-				teamData.totalPoint += fieldingPoints.STUMPING;
+				teamData.totalPoints += fieldingPoints.STUMPING;
 
 			if (currentBowlData.kind === "run out")
-				teamData.totalPoint += fieldingPoints.RUN_OUT;
+				teamData.totalPoints += fieldingPoints.RUN_OUT;
 		}
 	}
 };
@@ -60,7 +60,7 @@ const processBowlingPoints = (
 		// CHecking maiden over
 		if (currentBowlData.ballNumber == 6) {
 			if (currentOverRun == 0) {
-				teamData.totalPoint += bowlingPoints.MAIDEN_OVER;
+				teamData.totalPoints += bowlingPoints.MAIDEN_OVER;
 			}
 			currentOverRun = 0;
 		}
@@ -70,24 +70,24 @@ const processBowlingPoints = (
 			bowlerData.wicketsCount++;
 
 			if (bowlerData.wicketsCount >= 3) {
-				teamData.totalPoint += bowlingPoints.THREE_WICKET_BONUS;
+				teamData.totalPoints += bowlingPoints.THREE_WICKET_BONUS;
 			}
 			if (bowlerData.wicketsCount >= 4) {
-				teamData.totalPoint += bowlingPoints.FOUR_WICKET_BONUS;
+				teamData.totalPoints += bowlingPoints.FOUR_WICKET_BONUS;
 			}
 			if (bowlerData.wicketsCount === 5) {
-				teamData.totalPoint += bowlingPoints.FIVE_WICKET_BONUS;
+				teamData.totalPoints += bowlingPoints.FIVE_WICKET_BONUS;
 			}
 
 			if (currentBowlData.kind !== "run out") {
-				teamData.totalPoint += bowlingPoints.WICKET_EXCLUDING_RUN_OUT;
+				teamData.totalPoints += bowlingPoints.WICKET_EXCLUDING_RUN_OUT;
 			}
 
 			if (
 				currentBowlData.kind === "lbw" ||
 				currentBowlData.kind === "bowled"
 			) {
-				teamData.totalPoint += bowlingPoints.BONUS_LBW_OR_BOWLED;
+				teamData.totalPoints += bowlingPoints.BONUS_LBW_OR_BOWLED;
 			}
 		}
 	}
@@ -101,42 +101,42 @@ const processBattingPoints = (currentBowlData, teamData, playersMap) => {
 		switch (currentBowlData.batsman_run) {
 			case 4:
 				if (batterData.Captain) {
-					teamData.totalPoint += captainsPoint(
+					teamData.totalPoints += captainsPoint(
 						battingPoints.BOUNDARY_BONUS
 					);
 				} else if (batterData.ViceCaptain) {
-					teamData.totalPoint += viceCaptainsPoint(
+					teamData.totalPoints += viceCaptainsPoint(
 						battingPoints.BOUNDARY_BONUS
 					);
 				} else {
-					teamData.totalPoint += battingPoints.BOUNDARY_BONUS;
+					teamData.totalPoints += battingPoints.BOUNDARY_BONUS;
 				}
 				break;
 			case 6:
 				if (batterData.Captain) {
-					teamData.totalPoint += captainsPoint(
+					teamData.totalPoints += captainsPoint(
 						battingPoints.SIX_BONUS
 					);
 				} else if (batterData.ViceCaptain) {
-					teamData.totalPoint += viceCaptainsPoint(
+					teamData.totalPoints += viceCaptainsPoint(
 						battingPoints.SIX_BONUS
 					);
 				} else {
-					teamData.totalPoint += battingPoints.SIX_BONUS;
+					teamData.totalPoints += battingPoints.SIX_BONUS;
 				}
 				break;
 			default:
 				// case of 1 or 2 or 3
 				if (batterData.Captain) {
-					teamData.totalPoint += captainsPoint(
+					teamData.totalPoints += captainsPoint(
 						battingPoints.RUN * currentBowlData.batsman_run
 					);
 				} else if (batterData.ViceCaptain) {
-					teamData.totalPoint += viceCaptainsPoint(
+					teamData.totalPoints += viceCaptainsPoint(
 						battingPoints.RUN * currentBowlData.batsman_run
 					);
 				} else {
-					teamData.totalPoint +=
+					teamData.totalPoints +=
 						battingPoints.RUN * currentBowlData.batsman_run;
 				}
 				break;
@@ -148,13 +148,13 @@ const processBattingPoints = (currentBowlData, teamData, playersMap) => {
 
 		// Add points based on run scored by batsman
 		if (batterData.totalRun === 30)
-			teamData.totalPoint += battingPoints.THIRTY_RUN_BONUS;
+			teamData.totalPoints += battingPoints.THIRTY_RUN_BONUS;
 
 		if (batterData.totalRun === 50)
-			teamData.totalPoint += battingPoints.HALF_CENTURY_BONUS;
+			teamData.totalPoints += battingPoints.HALF_CENTURY_BONUS;
 
 		if (batterData.totalRun === 100)
-			teamData.totalPoint += battingPoints.CENTURY_BONUS;
+			teamData.totalPoints += battingPoints.CENTURY_BONUS;
 
 		// Check for Duck
 		// Dismissal for a duck 	-2 (Batter, Wicket-Keeper & All-Rounder only) ie, except bowler
@@ -164,7 +164,7 @@ const processBattingPoints = (currentBowlData, teamData, playersMap) => {
 				batterData.totalRun == 0 &&
 				batterData.Role !== roles.BOWLER
 			) {
-				teamData.totalPoint += battingPoints.DISMISSAL_FOR_A_DUCK;
+				teamData.totalPoints += battingPoints.DISMISSAL_FOR_A_DUCK;
 			}
 		}
 	}
