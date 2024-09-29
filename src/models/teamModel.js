@@ -14,6 +14,7 @@ const teamSchema = new mongoose.Schema({
 
 function arrayLimit(val) {
 	return val.length <= 11;
+	
 }
 
 const TeamModel = mongoose.model("TeamMOdel", teamSchema);
