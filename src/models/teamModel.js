@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const teamSchema = new mongoose.Schema({
 	teamName: String,
@@ -19,4 +19,4 @@ function arrayLimit(val) {
 
 const TeamModel = mongoose.model("TeamMOdel", teamSchema);
 
-module.exports = { TeamModel };
+export  { TeamModel };

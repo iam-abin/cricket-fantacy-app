@@ -7,4 +7,4 @@ const bowlingPoints = {
 	MAIDEN_OVER: 12,
 };
 
-module.exports = Object.freeze(bowlingPoints);
+export default Object.freeze(bowlingPoints);

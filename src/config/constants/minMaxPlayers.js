@@ -4,4 +4,4 @@ const minMax = {
 	TOTAL_TEAM_MEMBERS: 11
 };
 
-module.exports = Object.freeze(minMax);
+export default Object.freeze(minMax);

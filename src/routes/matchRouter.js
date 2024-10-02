@@ -1,7 +1,7 @@
-const router = require("express").Router();
-const matchController = require("../controllers/matchController")
+import express from "express";
+import matchController from "../controllers/matchController.js"
 
-
+const router = express.Router()
 
 router.post("/add-team", matchController.createATeam);
 
@@ -9,4 +9,4 @@ router.post("/process-result", matchController.processData);
 
 router.get("/team-result", matchController.teamResult);
 
-module.exports = router;
+export { router as matchRouter };

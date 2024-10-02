@@ -7,7 +7,7 @@ const viceCaptainsPoint = (point) => {
 };
 
 
-module.exports = {
+export {
 	captainsPoint,
 	viceCaptainsPoint,
 };

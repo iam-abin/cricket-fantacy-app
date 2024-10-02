@@ -7,4 +7,4 @@ const roles = {
 	VICE_CAPTAIN: "VICE_CAPTAIN"
 };
 
-module.exports = Object.freeze(roles);
+export default Object.freeze(roles);

@@ -1,12 +1,10 @@
-const fs = require("fs");
-const path = require("path");
-const util = require("util");
+import fs from 'fs/promises';
+import path from "path";
 
-const minMaxPlayers = require("../config/constants/minMaxPlayers");
+import minMaxPlayers from "../config/constants/minMaxPlayers.js";
 
-fs.readFile = util.promisify(fs.readFile);
 
-// TO check if there are more than 10 people from a team
+// To check if selected more than 10 people from a team (either RR or CSK)
 const checkExeedsTenFromATeam = async (players) => {
 	const playersSet = new Set(players);
 	const data = await getPlayersDataFromFile();
@@ -33,8 +31,7 @@ const checkPlayerRolesCount = async (players) => {
 	const playersSet = new Set(players);
 
 	const data = await getPlayersDataFromFile();
-	// console.log(data);
-
+	
 	const playerTypeMap = new Map();
 	for (let i = 0; i < data.length; i++) {
 		if (playersSet.has(data[i].Player)) {
@@ -102,7 +99,7 @@ const checkDuplicatePlayerEntry = (players) => {
 	return team.size < minMaxPlayers.TOTAL_TEAM_MEMBER;
 };
 
-module.exports = {
+export  {
 	getTeamPlayersDetails,
 	checkPlayerRolesCount,
 	checkExeedsTenFromATeam,

@@ -8,4 +8,4 @@ const fieldingPoints = {
 	DISMISSAL_FOR_A_DUCK: -2,
 };
 
-module.exports = Object.freeze(fieldingPoints);
+export default Object.freeze(fieldingPoints);

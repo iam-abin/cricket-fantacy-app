@@ -5,4 +5,4 @@ const fieldingPoints = {
 	RUN_OUT: 6,
 };
 
-module.exports = Object.freeze(fieldingPoints);
+export default Object.freeze(fieldingPoints);

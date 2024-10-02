@@ -1,11 +1,11 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const battingPoints = require("../config/constants/battingPoints");
-const bowlingPoints = require("../config/constants/bowlingPoints");
-const fieldingPoints = require("../config/constants/fieldingPoints");
-const roles = require("../config/constants/roles");
-const { captainsPoint, viceCaptainsPoint } = require("../services/points");
+import battingPoints from "../config/constants/battingPoints.js";
+import bowlingPoints from "../config/constants/bowlingPoints.js";
+import fieldingPoints from "../config/constants/fieldingPoints.js";
+import roles from "../config/constants/roles.js";
+import { captainsPoint, viceCaptainsPoint } from "../services/points.js";
 
 const getMatchDataFromFile = async () => {
 	// Read file asynchronously
@@ -179,7 +179,7 @@ const chunkArray = (array, chunkSize) => {
 	return chunkedArray;
 };
 
-module.exports = {
+export  {
 	getMatchDataFromFile,
 	processFieldingPoints,
 	processBowlingPoints,
